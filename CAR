@@ -1,51 +1,111 @@
-
+/ **
+ * @ author 1092031許桐榮
+ * @ ver 1.0
+ * /
+/ **
+ * 使用 iostream 和 string 的標頭檔
+ * 空間命名為 std
+ * /
 #include <iostream>
 #include <string>
 using namespace std;
+/ **
+ * @beief CCAR 簡易說明(定義)
+ * /
 class CCAR {
+/ **
+ * @beief 讓 NICKNAME 能在 CCAR 使用
+ * 使light , wheel能在允許的地方做修改並存取
+ * /
 private:
 string nickname;
 protected:
 int light;
 int wheel;
+/ **
+ * @beief 能夠在其他地方使用
+ * /
 public:
+/ **
+ * @beief CCAR 先執行 light 為 2 , wheel 為 5
+ * /
 CCAR() :light(2)
 {
 wheel = 5;
+/ **
+ * @beief 輸出文字 , light , wheel 
+ * /
 cout << "car's constructor(wheel=" << wheel << ")" << endl;
 }
+/ **
+ * @beief  CCAR 先執行 light 為 2 , wheel 為 5
+ * /
 CCAR(string nickname) :light(2)
 {
 wheel = 5;
+/ **
+ * @beief  使用 this 指標將 nickname 存入新的 nickname
+ * 輸出文字和 nickname
+ * /
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
+/ **
+ * @beief 使 CCAR 最後執行 , 並輸出文字與 nickname
+ * /
 ~CCAR()
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
+/ **
+ * @beief 輸出 car's start 的 function
+ * /
 void start()
 {
 cout << "car's start" << endl;
 }
+/ **
+ * @beief 輸出 car's stop 的 function
+ * /
 void stop()
 {
 cout << "car's stop" << endl;
 }
+/ **
+ * @beief 輸出 car's turn 的 function
+ * /
 void turn()
 {
 cout << "car's turn" << endl;
 }
 };
 //--------------------------
+/ **
+ * @beief claee CBMN 繼承 CCAR 的功能 
+ * /
 class CBMW : public CCAR {
 public:
+/ **
+ * @beief 先執行 light 為 4 , wheel 為 4 , 並輸出字元
+ * /
 CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
+/ **
+ * @beief 最後執行 , 並輸出字元
+ * /
 ~CBMW() { cout << "bmw's destructor" << endl; }
+/ **
+ * @beief 輸出 Abs 的 function , 並輸出字元
+ * /
 void Abs()
 {
 cout << "bmw's abs" << endl;
 }
+/ **
+ * @beief 輸出 start 的 function , 並輸出字元
+ * /
+ / **
+ * @beief 覆蓋 CCAR 的 start function 
+ * /
 void start()
 {
 cout << "bmw's start" << endl;
@@ -56,11 +116,20 @@ CCAR::start();//scope operator
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
+/ **
+ * @beief 將 CBMW 的class 設定為 bmw 
+ * /
 CBMW bmw;
 // bmw.light=3;
+/ **
+ * @beief 執行中的 start , Abs , stop function
+ * /
 bmw.start();
 bmw.Abs();
 bmw.stop();
 
+/ **
+ * @beief 回傳0 
+ * /
 return 0;
 }
